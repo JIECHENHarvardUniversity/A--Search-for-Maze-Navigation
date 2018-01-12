@@ -4,26 +4,29 @@ using namespace std;
   
 int main()  
 {  
-    //初始化地图，用二维矩阵代表地图，1表示障碍物，0表示可通  
+    //initialize the map of the maze
+    //where the map is represented as a matrix
+    //"1" represents the obstacle
+    //"0" represents the path
     vector<vector<int>> maze={  
-        {1,1,1,1,1,1,1,1,1,1,1,1},  
+        {0,1,1,1,1,1,1,1,1,1,1,1},  
         {1,0,0,1,1,0,1,0,0,0,0,1},  
-        {1,0,0,1,1,0,0,0,0,0,0,1},  
+        {1,0,0,1,1,0,0,0,0,0,0,0},  
         {1,0,0,0,0,0,1,0,0,1,1,1},  
-        {1,1,1,0,0,0,0,0,1,1,0,1},  
+        {1,1,1,0,0,0,0,0,1,1,0,0},  
         {1,1,0,1,0,0,0,0,0,0,0,1},  
         {1,0,1,0,0,0,0,1,0,0,0,1},  
-        {1,1,1,1,1,1,1,1,1,1,1,1}  
+        {1,1,1,1,1,1,1,0,1,0,1,0}  
     };  
     Astar astar;  
     astar.InitAstar(maze);  
   
-    //设置起始和结束点  
+    //set the start point and the end point  
     Point start(1,1);  
     Point end(6,10);  
-    //A*算法找寻路径  
+    //run the A* algorithm  
     list<Point *> path=astar.GetPath(start,end,false);  
-    //打印  
+    //print the output coordinates of the found path  
     for(auto &p:path)  
         cout<<'('<<p->x<<','<<p->y<<')'<<endl;  
   
